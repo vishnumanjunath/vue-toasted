@@ -659,20 +659,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var Toasted = {
-    install: function install(Vue, options) {
-        if (!options) {
-            options = {};
-        }
-
-        var Toast = new __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */](options);
-        Vue.component('toasted', __WEBPACK_IMPORTED_MODULE_1__toast_vue___default.a);
-        Vue.toasted = Vue.prototype.$toasted = Toast;
+  install: function install(app) {
+    if (!options) {
+      options = {};
     }
+
+    var Toast = new __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */](options);
+    app.component('toasted', __WEBPACK_IMPORTED_MODULE_1__toast_vue___default.a);
+
+    app.config.globalProperties.$toasted = Toast;
+  }
 };
 
 // register plugin if it is used via cdn or directly as a script tag
 if (typeof window !== 'undefined' && window.Vue) {
-    window.Toasted = Toasted;
+  window.Toasted = Toasted;
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Toasted);
